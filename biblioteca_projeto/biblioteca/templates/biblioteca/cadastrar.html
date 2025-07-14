@@ -1,0 +1,15 @@
+{% extends 'biblioteca/base.html' %}
+{% block title %}Cadastrar Artista{% endblock %}
+
+{% block content %}
+<h2>Cadastrar Novo Artista de Rua</h2>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <button type="submit" class="btn btn-success mt-2">Cadastrar</button>
+</form>
+
+<a href="/" class="btn btn-secondary mt-3">Voltar para início</a>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block title %}Início - Arte de Rua{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Artistas de Rua</h1>
+
+{% for artista in artistas %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ artista.nome }}</h5>
+      <p class="card-text"><strong>Estilo:</strong> {{ artista.estilo }} | <strong>Cidade:</strong> {{ artista.cidade }}</p>
+      <p>{{ artista.biografia }}</p>
+    </div>
+  </div>
+{% empty %}
+  <p>Nenhum artista cadastrado.</p>
+{% endfor %}
+
+<hr>
+
+<h2 class="mt-5">Intervenções Artísticas</h2>
+
+{% for obra in obras %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ obra.titulo }}</h5>
+      <p><strong>Artista:</strong> {{ obra.artista }}</p>
+      <p><strong>Local:</strong> {{ obra.local }} | <strong>Data:</strong> {{ obra.data }}</p>
+      <p>{{ obra.descricao }}</p>
+      {% if obra.imagem %}
+        <img src="{{ obra.imagem }}" class="img-fluid mt-2" style="max-height: 300px;">
+      {% endif %}
+    </div>
+  </div>
+{% empty %}
+  <p>Nenhuma intervenção cadastrada.</p>
+{% endfor %}
+{% endblock %}
