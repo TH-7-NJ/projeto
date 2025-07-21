@@ -1,11 +1,16 @@
 from django.shortcuts import render, redirect
-from .models import ArtistaDeRua, IntervencaoArtistica
+from .models import ArtistaDeRua  # Se você tiver o modelo Intervencao, adicione depois
 from .forms import ArtistaForm
 
 def index(request):
     artistas = ArtistaDeRua.objects.all()
-    obras = IntervencaoArtistica.objects.filter(visivel=True)
-    return render(request, 'biblioteca/index.html', {'artistas': artistas, 'obras': obras})
+    # Se você tiver Intervencao, descomente a linha abaixo
+    # obras = Intervencao.objects.all()
+    
+    return render(request, 'biblioteca/index.html', {
+        'artistas': artistas,
+        # 'obras': obras
+    })
 
 def cadastrar_artista(request):
     if request.method == 'POST':
@@ -16,4 +21,6 @@ def cadastrar_artista(request):
     else:
         form = ArtistaForm()
     
-    return render(request, 'biblioteca/cadastrar.html', {'form': form})
+    return render(request, 'biblioteca/cadastrar_artista.html', {
+        'form': form
+    })

@@ -33,5 +33,14 @@ class IntervencaoArtistica(models.Model):
     imagem = models.URLField(blank=True, help_text="Link para imagem da intervenção")
     visivel = models.BooleanField(default=True)
 
+
+class Intervencao(models.Model):
+    titulo = models.CharField(max_length=100)
+    descricao = models.TextField()
+    data = models.DateField()
+    artista = models.ForeignKey('ArtistaDeRua', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.titulo
     def __str__(self):
         return self.titulo
