@@ -1,42 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}A Rua Como Palco{% endblock %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .navbar-brand {
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>{% block title %}A Rua Como Palco{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1d1729;
+      color: #9b8d8d;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    a.nav-link:hover {
+      color: #fdd835 !important;
+    }
+  </style>
 </head>
 <body>
-    <!-- Barra de navegação -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'index' %}">🎭 A Rua Como Palco</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'cadastrar_artista' %}">Cadastrar Artista</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Conteúdo -->
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container">
-        {% block content %}{% endblock %}
+      <a class="navbar-brand" href="{% url 'index' %}">🎭 A Rua Como Palco</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">🏠 Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'listar_artistas' %}">👥 Artistas</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'galeria' %}">🖼️ Intervenções</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'cadastrar_artista' %}">📝 Cadastrar</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'eventos' %}">📅 Eventos</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'locais' %}">📍 Locais</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'contato' %}">💌 Contato</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'sobre' %}">ℹ️ Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'apoio' %}">🧠 Apoie</a></li>
+          {% if user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">🚪 Sair</a></li>
+            <li class="nav-item"><span class="nav-link disabled">👤 {{ user.username }}</span></li>
+          {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">🔐 Entrar</a></li>
+          {% endif %}
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Conteúdo da página -->
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
