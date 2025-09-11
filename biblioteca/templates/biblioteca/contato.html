@@ -1,0 +1,35 @@
+{% extends 'biblioteca/base.html' %}
+{% block title %}Fale com a gente{% endblock %}
+{% block content %}
+  <div class="container text-white py-5">
+    <h2 class="mb-4 text-center">💌 Entre em Contato</h2>
+    <p class="lead text-center">Dúvidas, sugestões ou ideias? Envie sua mensagem abaixo:</p>
+
+    {% if sucesso %}
+      <div class="alert alert-success text-center">Mensagem enviada com sucesso! Obrigado pelo contato.</div>
+    {% endif %}
+
+    <form method="POST" class="mt-4">
+      {% csrf_token %}
+      <div class="mb-3">
+        {{ form.nome.label_tag }}
+        {{ form.nome }}
+      </div>
+      <div class="mb-3">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+      </div>
+      <div class="mb-3">
+        {{ form.mensagem.label_tag }}
+        {{ form.mensagem }}
+      </div>
+      <button type="submit" class="btn btn-warning">Enviar</button>
+    </form>
+
+    <hr class="my-5">
+    <div class="text-center">
+      <p>Email: <strong>contato@aruacomopalco.com.br</strong></p>
+      <p>Instagram: <a href="https://instagram.com/aruacomopalco" target="_blank">@aruacomopalco</a></p>
+    </div>
+  </div>
+{% endblock %}

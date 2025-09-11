@@ -1,0 +1,34 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block title %}Galeria de Intervenções{% endblock %}
+
+{% block content %}
+  <h2 class="text-center mb-4">🖼️ Intervenções Artísticas</h2>
+
+  {% if obras %}
+    <div class="row">
+      {% for obra in obras %}
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card shadow-sm h-100">
+            {% if obra.imagem %}
+              <a href="{{ obra.imagem.url }}" data-lightbox="galeria" data-title="{{ obra.titulo }}">
+                <img src="{{ obra.imagem.url }}" class="card-img-top" alt="{{ obra.titulo }}">
+              </a>
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ obra.titulo }}</h5>
+              <p class="card-text">
+                <strong>Artista:</strong> {{ obra.artista.nome }}<br>
+                <strong>Local:</strong> {{ obra.local }}<br>
+                <strong>Data:</strong> {{ obra.data }}<br>
+                {{ obra.descricao }}
+              </p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-center">Nenhuma intervenção cadastrada ainda.</p>
+  {% endif %}
+{% endblock %}

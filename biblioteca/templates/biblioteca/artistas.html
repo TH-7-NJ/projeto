@@ -1,0 +1,37 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block title %}Artistas de Rua{% endblock %}
+
+{% block content %}
+  <div class="text-white py-5 text-center">
+    <h2 class="mb-4">👥 Artistas de Rua</h2>
+
+    {% if artistas %}
+      <div class="container">
+        <div class="row">
+          {% for artista in artistas %}
+            <div class="col-md-4">
+              <div class="card mb-3 shadow-sm" style="background: rgba(255,255,255,0.05); border: none;">
+                {% if artista.foto %}
+                  <img src="{{ artista.foto.url }}" class="card-img-top" alt="Foto de {{ artista.nome }}">
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <a href="{% url 'perfil_artista' artista.id %}" class="text-light text-decoration-none">{{ artista.nome }}</a>
+                  </h5>
+                  <p class="card-text text-light">
+                    <strong>Estilo:</strong> {{ artista.estilo.nome }}<br>
+                    <strong>Cidade:</strong> {{ artista.cidade }}<br>
+                    <strong>Contato:</strong> {{ artista.contato }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% else %}
+      <p class="text-light">Nenhum artista cadastrado ainda.</p>
+    {% endif %}
+  </div>
+{% endblock %}
