@@ -11,5 +11,5 @@ urlpatterns = [
     path('locais/', views.locais, name='locais'),
     path('sobre/', views.sobre, name='sobre'),
     path('apoio/', views.apoio, name='apoio'),
-    path('artista/<int:artista_id>/', views.perfil_artista, name='perfil_artista'),
+    path('artista/<int:pk>/', views.perfil_artista, name='perfil_artista'),  # ← aqui tá o ajuste
 ]

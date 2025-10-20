@@ -1,8 +1,12 @@
 {% extends 'biblioteca/base.html' %}
+{% load static %}
 
 {% block title %}Eventos Culturais{% endblock %}
 
 {% block content %}
   <h2 class="mb-4">Eventos de Arte Urbana</h2>
   <p class="lead">Aqui você encontrará informações sobre feiras, rodas culturais, apresentações e outros eventos relacionados à arte de rua. Em breve, essa página será atualizada com datas e locais!</p>
+  <div class="voltar">
+    <a href="javascript:history.back()" class="botao">← Voltar</a>
+  </div>
 {% endblock %}

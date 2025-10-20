@@ -10,7 +10,7 @@ from .models import (
 )
 
 def index(request):
-    artistas = ArtistaDeRua.objects.all()
+    artistas = ArtistaDeRua.objects.exclude(id__isnull=True)
     obras = IntervencaoArtistica.objects.filter(visivel=True)
     return render(request, 'biblioteca/index.html', {
         'artistas': artistas,
@@ -21,13 +21,14 @@ def listar_artistas(request):
     artistas = ArtistaDeRua.objects.all()
     return render(request, 'biblioteca/artistas.html', {'artistas': artistas})
 
-def perfil_artista(request, artista_id):
-    artista = get_object_or_404(ArtistaDeRua, id=artista_id)
+def perfil_artista(request, pk):
+    artista = get_object_or_404(ArtistaDeRua, pk=pk)
     intervencoes = IntervencaoArtistica.objects.filter(artista=artista, visivel=True)
     return render(request, 'biblioteca/perfil_artista.html', {
         'artista': artista,
         'intervencoes': intervencoes
     })
+
 
 def galeria(request):
     obras = IntervencaoArtistica.objects.filter(visivel=True)

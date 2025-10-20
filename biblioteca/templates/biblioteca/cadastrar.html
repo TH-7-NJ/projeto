@@ -1,4 +1,5 @@
 {% extends 'biblioteca/base.html' %}
+{% load static %}
 
 {% block title %}Cadastrar Artista{% endblock %}
 
@@ -11,4 +12,7 @@
         <button type="submit" class="btn btn-success">Salvar</button>
         <a href="{% url 'listar_artistas' %}" class="btn btn-secondary">Cancelar</a>
     </form>
+    <div class="voltar">
+        <a href="javascript:history.back()" class="botao">← Voltar</a>
+      </div>
 {% endblock %}

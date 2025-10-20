@@ -1,4 +1,5 @@
 {% extends 'biblioteca/base.html' %}
+{% load static %}
 {% block title %}Fale com a gente{% endblock %}
 {% block content %}
   <div class="container text-white py-5">
@@ -31,5 +32,8 @@
       <p>Email: <strong>contato@aruacomopalco.com.br</strong></p>
       <p>Instagram: <a href="https://instagram.com/aruacomopalco" target="_blank">@aruacomopalco</a></p>
     </div>
+  </div>
+  <div class="voltar">
+    <a href="javascript:history.back()" class="botao">← Voltar</a>
   </div>
 {% endblock %}

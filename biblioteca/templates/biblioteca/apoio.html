@@ -1,4 +1,6 @@
 {% extends 'biblioteca/base.html' %}
+{% load static %}
+
 
 {% block title %}Apoie um Artista{% endblock %}
 
@@ -15,4 +17,8 @@
   </ul>
 
   <p class="mt-4">Quer apoiar de forma direta? Entre em contato com um artista da plataforma ou envie sua proposta para nossa equipe: <strong>apoio@aruaruapalco.com.br</strong></p>
+
+  <div class="voltar">
+    <a href="javascript:history.back()" class="botao">← Voltar</a>
+  </div>
 {% endblock %}

@@ -1,71 +1,51 @@
 {% extends 'biblioteca/base.html' %}
+{% load static %}
 
-{% block title %}A Rua Como Palco{% endblock %}
+
+{% block title %}Início - A Rua Como Palco{% endblock %}
 
 {% block content %}
-  <div style="background-color: #04092c; color: #eee; padding: 60px 0; text-align: center;">
-    <h1 style="font-size: 3rem; font-weight: bold;">Bem vindo a nosso site <br> A Rua Como Palco</h1>
-    <p style="font-size: 1.2rem;">Arte urbana, intervenções e cultura viva nas ruas do Brasil</p>
-    <a href="{% url 'galeria' %}" class="btn btn-light mt-3">Ver Galeria</a>
+<header>
+  <nav>
+    <a href="{% url 'index' %}">Início</a>
+    <a href="{% url 'cadastrar_artista' %}">Cadastre-se como artista</a>
+    <a href="{% url 'listar_artistas' %}">Artistas</a>
+    <a href="{% url 'galeria' %}">Galeria</a>
+    <a href="{% url 'eventos' %}">Agenda</a>
+    <a href="{% url 'locais' %}">Locais</a>
+    <a href="{% url 'contato' %}">Contato</a>
+    <a href="{% url 'apoio' %}">Apoio</a>
+    <a href="{% url 'sobre' %}">Sobre</a>
+  </nav>
+  
+</header>
+
+<main>
+  <section class="destaque">
+    <h1>A RUA COMO PALCO</h1>
+    <p>Arte urbana, intervenções e cultura viva nas ruas do Brasil</p>
+    <a href="#" class="botao">Ver Galeria</a>
+  </section>
+
+  <section class="eventos">
+    <h2>Intervenções Recentes</h2>
+    <article>
+      <h3>Roda de conversa sobre Batalha de Rima</h3>
+      <p>Venha conversar e interagir com a gente junto-se para saber mais sobre as famosas batalhas de rimas da periferia</p>
+      <p><strong>Data:</strong> 26 de Julho de 2025</p>
+    </article>
+    <article>
+      <h3>Arte do Grafite</h3>
+      <p>Venha ver como é feita uma arte de rua e aprender mais sobre a cultura do Grafite. Espero todos vocês</p>
+      <p><strong>Data:</strong> 27 de Julho de 2025</p>
+    </article>
+  </section>
+  <div class="voltar">
+    <a href="javascript:history.back()" class="botao">← Voltar</a>
   </div>
+</main>
 
-  <section class="container py-5">
-    <h2 class="mb-4 text-white text-center">Artistas de Rua</h2>
-
-    {% if artistas %}
-      <div class="row">
-        {% for artista in artistas %}
-          <div class="col-md-4">
-            <div class="card mb-4 shadow" style="background: rgba(14, 8, 57, 0.783); color: #fff; border: none;">
-              {% if artista.foto %}
-                <img src="{{ artista.foto.url }}" class="card-img-top" alt="{{ artista.nome }}">
-              {% endif %}
-              <div class="card-body">
-                <h5 class="card-title">
-                  <a href="{% url 'perfil_artista' artista.id %}" style="color: #bababe;">{{ artista.nome }}</a>
-                </h5>
-                <p class="card-text">
-                  <strong>Estilo:</strong> {{ artista.estilo.nome }}<br>
-                  <strong>Cidade:</strong> {{ artista.cidade }}<br>
-                  <strong>Contato:</strong> {{ artista.contato }}<br>
-                  <strong>Redes Sociais:</strong> {{ artista.redes_sociais }}<br>
-                </p>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    {% else %}
-      <p class="text-white">Nenhum artista cadastrado ainda.</p>
-    {% endif %}
-  </section>
-
-  <section class="container pb-5">
-    <h3 class="mb-4 text-white text-center">Intervenções Artísticas Visíveis</h3>
-
-    {% if obras %}
-      <div class="row">
-        {% for obra in obras %}
-          <div class="col-md-6">
-            <div class="card mb-3 shadow" style="background: rgba(255,255,255,0.05); color: #fff; border: none;">
-              {% if obra.imagem %}
-                <img src="{{ obra.imagem.url }}" class="card-img-top" alt="{{ obra.titulo }}">
-              {% endif %}
-              <div class="card-body">
-                <h5 class="card-title">{{ obra.titulo }}</h5>
-                <p class="card-text">
-                  <strong>Artista:</strong> {{ obra.artista.nome }}<br>
-                  <strong>Local:</strong> {{ obra.local }}<br>
-                  <strong>Data:</strong> {{ obra.data }}<br>
-                  {{ obra.descricao }}
-                </p>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    {% else %}
-      <p class="text-white text-center">Não há intervenções artísticas visíveis no momento.</p>
-    {% endif %}
-  </section>
+<footer>
+  <p>&copy; 2025 A Rua Como Palco</p>
+</footer>
 {% endblock %}

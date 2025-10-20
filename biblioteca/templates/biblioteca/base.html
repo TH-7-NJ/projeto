@@ -4,76 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}A Rua Como Palco{% endblock %}</title>
-
   {% load static %}
-  <link rel="stylesheet" href="{% static 'biblioteca/style.css' %}">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
-
-
-  <style>
-    body {
-      background-color: #000;
-      color:#b4f500;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    a.nav-link:hover {
-      color: #fdd835 !important;
-    }
-  </style>
-  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'cssbase/style.css' %}">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-    <div class="container">
-      <a class="navbar-brand" href="{% url 'index' %}">🎭 A Rua Como Palco</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="menuPrincipal">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">🏠 Início</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'listar_artistas' %}">👥 Artistas</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'galeria' %}">🖼️ Intervenções</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'cadastrar_artista' %}">📝 Cadastrar</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'eventos' %}">📅 Eventos</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'locais' %}">📍 Locais</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'contato' %}">💌 Contato</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'sobre' %}">ℹ️ Sobre</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'apoio' %}">🧠 Apoie</a></li>
-          {% if user.is_authenticated %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">🚪 Sair</a></li>
-            <li class="nav-item"><span class="nav-link disabled">👤 {{ user.username }}</span></li>
-          {% else %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">🔐 Entrar</a></li>
-          {% endif %}
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Conteúdo da página -->
-  <div class="container">
-    {% block content %}{% endblock %}
-  </div>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-
-
-  <footer class="bg-dark text-light py-4 mt-5">
-    <div class="container text-center">
-      <p>🎭 Projeto A Rua Como Palco — Muzambinho, MG</p>
-      <p>
-        <a href="https://instagram.com" class="text-warning me-3"target="_blank">Instagram</a>
-        <a href="https://youtube.com" class="text-warning me-3"target="_blank">YouTube</a>
-        <a href="mailto:contato@seuprojeto.com" class="text-warning me-3"target="_blank">Email</a>
-      </p>
-      <small>&copy; 2025 Todos os direitos reservados.</small>
-    </div>
-  </footer>
-  
+  {% block content %}{% endblock %}
 </body>
 </html>

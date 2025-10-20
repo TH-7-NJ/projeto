@@ -1,4 +1,5 @@
 {% extends 'biblioteca/base.html' %}
+{% load static %}
 
 {% block title %}Galeria de Intervenções{% endblock %}
 
@@ -25,6 +26,9 @@
               </p>
             </div>
           </div>
+        </div>
+        <div class="voltar">
+          <a href="javascript:history.back()" class="botao">← Voltar</a>
         </div>
       {% endfor %}
     </div>

@@ -1,5 +1,5 @@
 {% extends 'biblioteca/base.html' %}
-
+{% load static %}
 {% block title %}Sobre o Projeto{% endblock %}
 
 {% block content %}
@@ -12,4 +12,7 @@
   <p>Nosso objetivo é construir pontes entre artistas, público e cidades, fomentando cultura, diversidade e transformação social através da expressão livre.</p>
 
   <p><strong>Porque toda rua pode ser palco. Toda arte merece plateia.</strong></p>
+  <div class="voltar">
+    <a href="javascript:history.back()" class="botao">← Voltar</a>
+  </div>
 {% endblock %}
