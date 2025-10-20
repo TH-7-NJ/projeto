@@ -1,0 +1,30 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block title %}Perfil de {{ artista.nome }}{% endblock %}
+
+{% block content %}
+  <h2 class="mb-3">{{ artista.nome }}</h2>
+
+  {% if artista.foto %}
+    <img src="{{ artista.foto.url }}" alt="Foto de {{ artista.nome }}" class="mb-4" style="max-width: 300px;">
+  {% endif %}
+
+  <p><strong>Estilo:</strong> {{ artista.estilo.nome }}</p>
+  <p><strong>Cidade:</strong> {{ artista.cidade.nome }}/{{ artista.cidade.uf }}</p>
+  <p class="mt-3"><strong>Biografia:</strong><br>{{ artista.biografia|linebreaks }}</p>
+
+  <hr>
+  <h3 class="mt-5">Intervenções:</h3>
+  <ul>
+    {% for obra in intervencoes %}
+      <li>
+        <strong>{{ obra.titulo }}</strong> — {{ obra.local }} ({{ obra.data }})  
+        {% if obra.imagem %}
+          <br><img src="{{ obra.imagem.url }}" alt="{{ obra.titulo }}" style="max-width: 200px; margin-top: 5px;">
+        {% endif %}
+      </li>
+    {% empty %}
+      <p>Nenhuma intervenção cadastrada ainda.</p>
+    {% endfor %}
+  </ul>
+{% endblock %}
